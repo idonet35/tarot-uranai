@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom'
+//import { useNavigate } from 'react-router-dom'
 
 import './DivinationForm.css'
 
@@ -54,7 +54,7 @@ export default function DivinationForm() {
     } = useForm<InputData>({ mode: 'onChange', defaultValues: { year: "1986" } });
 
     // Navigate関数
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     // Submit Event
     const onSubmit = (data: InputData) => {
@@ -130,7 +130,7 @@ export default function DivinationForm() {
                                             const y = Number(getValues('year'));
                                             const m = Number(getValues('month'));
                                             const d = Number(value);
-                                            if (m == 2) {
+                                            if (m === 2) {
                                                 if (((y % 4 === 0) && (y % 100 !== 0)) || (y % 400 === 0)) {
                                                     if (d >= 30) return "正しい日付を入力してください";
                                                 }
@@ -138,8 +138,8 @@ export default function DivinationForm() {
                                                     if (d >= 29) return "正しい日付を入力してください";
                                                 }
                                             }
-                                            else if (m == 4 || m == 6 || m == 9 || m == 11) {
-                                                if (d == 31) return "正しい日付を入力してください";
+                                            else if (m === 4 || m === 6 || m === 9 || m === 11) {
+                                                if (d === 31) return "正しい日付を入力してください";
                                             }
                                             return;
                                         } 

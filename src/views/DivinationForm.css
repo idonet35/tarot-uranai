@@ -1,9 +1,9 @@
 :root {
-  --main-color: #9dc3c1;
-  --sub-color: #77aaad;
-  --link-color: #d8e6e7;
-  --error-color: #da3c41;
-  --background-color: #6e7783;
+  --main-color: #da3c41;
+  --sub-color: #da9691;
+  --link-color: #936060;
+  --error-color: #961010;
+  --background-color: #ededed;
 }
 
 .divination-container{
@@ -50,10 +50,23 @@ button#submit_button:hover{
   color: var(--link-color);
 }
 
-.form-block{
+.layout-grid3{
+  display: grid;
   width: 100%;
+  grid-auto-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media(max-width : 600px){
+  .layout-grid3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-block{
+  width: 95%;
   height: 90px;
-  margin: 10px 10px 40px 10px;
+  margin: 10px auto 40px auto;
 }
 
 .form-double-block{
@@ -72,7 +85,7 @@ button#submit_button:hover{
 
 .type-input {
   font-size: 16px;
-  color: var(--link-color);
+  color: var(--sub-color);
   box-sizing: border-box;
   width: 100%;
   letter-spacing: 1px;
@@ -104,4 +117,33 @@ button#submit_button:hover{
   left: 0;
   width: 100%;
   transition: 0.4s;
+}
+
+.form-select{
+  position: relative;
+  margin: 0 10px;
+}
+
+.form-select select{
+  appearance: none;
+  -webkit-appearance: none;
+  padding-left: 20px;
+}
+
+.form-select select::-ms-expand{
+  display: none;
+}
+
+.form-select:after {
+	position: absolute;
+	top: 18px;
+	right: 10px;
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid var(--sub-color);
+	pointer-events: none;
 }

@@ -82,7 +82,7 @@ export default function DivinationForm() {
                         />
                         <span className="focus-line" />
                     </div>
-                    <p className="error">{errors.username?.message as React.ReactNode}</p>
+                    <p className="error">&nbsp;{errors.username?.message as React.ReactNode}</p>
                 </div>
 
                 <div className="form-block">
@@ -156,7 +156,7 @@ export default function DivinationForm() {
                             <span className="focus-line" />
                         </div>
                     </div>
-                    <p className="error">{errors.date?.message as React.ReactNode}</p>
+                    <p className="error">&nbsp;{errors.date?.message as React.ReactNode}</p>
                 </div>
 
                 <div className="form-block form-double-block">
@@ -172,7 +172,7 @@ export default function DivinationForm() {
                         ></textarea>
                         <span className="focus-line" />
                     </div>
-                    <p className="error">{errors.message?.message as React.ReactNode}</p>
+                    <p className="error">&nbsp;{errors.message?.message as React.ReactNode}</p>
                 </div>
 
                 <div>

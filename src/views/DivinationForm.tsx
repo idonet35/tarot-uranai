@@ -1,8 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-//import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-import './DivinationForm.css'
+import './views.css'
 
 interface InputData {
     username: string;
@@ -54,17 +54,18 @@ export default function DivinationForm() {
     } = useForm<InputData>({ mode: 'onChange', defaultValues: { year: "1986" } });
 
     // Navigate関数
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     // Submit Event
     const onSubmit = (data: InputData) => {
-        alert(
-            `わーい`
-        );
+        // フォームデータを渡して遷移
+        navigate('/result',{
+            state: {data}
+        });
     }
 
     // selectの選択管理と初期値アイテム
-
+console.log("test");
     return (
         <div className="divination-container">
             <h2 className="heading">UranAI</h2>

@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import DivinationForm from './views/DivinationForm';
+import TarotResults from './views/TarotResults';
 import './App.css';
 
 function App() {
@@ -7,7 +8,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path={`/`} element={<DivinationForm />} />
-        <Route path={`result`} element={<p>結果表示</p>} />
+        <Route path={`result`} element={<TarotResults />} />
       </Routes>
     </BrowserRouter>
   );

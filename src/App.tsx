@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import DivinationForm from './views/DivinationForm';
-import TarotResults from './views/TarotResults';
-import './App.css';
+import { DivinationForm } from 'views/pages/DivinationForm';
+import { TarotResults } from 'views/pages/TarotResults';
 
 function App() {
   return (

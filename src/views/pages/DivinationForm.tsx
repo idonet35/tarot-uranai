@@ -1,16 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom'
+import { PersonalData } from '../components/PersonalData';
 
-import './views.css'
-
-interface InputData {
-    username: string;
-    year: string;
-    month: string;
-    date: string;
-    message: string;
-}
+import 'views/styles/views.css'
 
 interface dayOption {
     key: number;
@@ -29,7 +22,7 @@ const createOption = (dayOptions: dayOption[], startNum: number, endNum: number)
     }
 }
 
-export default function DivinationForm() {
+export function DivinationForm() {
 
     // 日付データ
     const today = new Date();
@@ -51,21 +44,20 @@ export default function DivinationForm() {
         getValues,
         handleSubmit,           // フォームのSumit Eventで呼ばれる関数
         formState: { errors },  // バリデーションエラーの情報が格納
-    } = useForm<InputData>({ mode: 'onChange', defaultValues: { year: "1986" } });
+    } = useForm<PersonalData>({ mode: 'onChange', defaultValues: { year: "1986" } });
 
     // Navigate関数
     const navigate = useNavigate();
 
     // Submit Event
-    const onSubmit = (data: InputData) => {
+    const onSubmit = (data: PersonalData) => {
         // フォームデータを渡して遷移
         navigate('/result',{
-            state: {data}
+            state: data
         });
     }
 
     // selectの選択管理と初期値アイテム
-console.log("test");
     return (
         <div className="divination-container">
             <h2 className="heading">UranAI</h2>

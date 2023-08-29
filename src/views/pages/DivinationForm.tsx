@@ -60,7 +60,9 @@ export function DivinationForm() {
     // selectの選択管理と初期値アイテム
     return (
         <div className="divination-container">
-            <h2 className="heading">UranAI</h2>
+            <h2 className="heading">大綿津見アトイのタロット占い</h2>
+            <p className="center">「Anser to Ideal」</p>
+            <p className="center">理想に向かう答えを見つける手助けをします</p>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-block">
                     <p>名前</p>

@@ -33,6 +33,10 @@ p{
   margin: 4px;
 }
 
+p.center{
+  text-align: center;
+}
+
 /* Common Part */
 
 .divination-container{

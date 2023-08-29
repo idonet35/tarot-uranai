@@ -71,7 +71,8 @@ export function TarotResults() {
 
     return (
         <div className="divination-container">
-            <h2>占い結果</h2>
+            <h2>大綿津見アトイのタロット占い</h2>
+            <p className="center">結果</p>
             <div className="result-tarots">
                 <div className="layout-grid3">
                     <div className="result-tarot-report">

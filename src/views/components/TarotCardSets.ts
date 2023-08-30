@@ -102,6 +102,29 @@ export class TarotData {
     }
 }
 
+// デッキからカードを指定枚数引く
+export function drawCards(numOfCards: number): TarotData[] {
+    if (numOfCards > tarotDeck.length) {
+        return [];
+    }
+
+    // 引いたカードを保存
+    const drawnCards = [];
+
+    // カードデッキをコピー
+    const remaininigDeck = [...tarotDeck];
+
+    for (let i = 0; i < numOfCards; i++) {
+        const randomIndex = Math.floor(Math.random() * remaininigDeck.length);
+        const card = remaininigDeck.splice(randomIndex, 1)[0];
+        card.reverse = Math.random() < 0.5;
+
+        drawnCards.push(card);
+    }
+
+    return drawnCards;
+}
+
 export const tarotDeck: TarotData[] = [
     // 大アルカナ
     new TarotData('愚者', 'The Fool', tarots_00_fool),

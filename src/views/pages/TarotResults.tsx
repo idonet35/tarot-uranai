@@ -1,76 +1,21 @@
-import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'
-import { PersonalData } from 'views/components/PersonalData'
-import { TarotData, tarotDeck } from 'views/components/TarotCardSets';
-import { tarotAI } from 'views/components/OpenAI';
+import { ReadingResult } from 'views/components/PersonalData'
 
 import 'views/styles/views.css'
-
-// タロットカードデッキ
-function DrawCards(numOfCards: number): TarotData[] {
-    if (numOfCards > tarotDeck.length) {
-        return [];
-    }
-
-    // 引いたカードを保存
-    const drawnCards = [];
-
-    // カードデッキをコピー
-    const remaininigDeck = [...tarotDeck];
-
-    for (let i = 0; i < numOfCards; i++) {
-        const randomIndex = Math.floor(Math.random() * remaininigDeck.length);
-        const card = remaininigDeck.splice(randomIndex, 1)[0];
-        card.reverse = Math.random() < 0.5;
-
-        drawnCards.push(card);
-    }
-
-    return drawnCards;
-}
-
-// 初期化フラグ
-let initFlag = true;
-
-// 3枚のカードを引く
-let threeCards: TarotData[] = DrawCards(3);;
 
 export function TarotResults() {
     // 前のページの情報を取得する
     const location = useLocation();
-    const [personalData] = useState(location.state as PersonalData);
-    const [card1Message, setCard1Message] = useState('');
-    const [card2Message, setCard2Message] = useState('');
-    const [card3Message, setCard3Message] = useState('');
-    // const [totalMessage, setTotalMessage] = useState('');
-    const [adviceMessage, setAdviceMessage] = useState('');
-    const [isInitialized, setInitialized] = useState(false);
+    const readingResult = location.state as ReadingResult;
 
-    useEffect(() => {
-        if (initFlag) {
-            initFlag = false;
-
-            const card1 = threeCards[0].getName();
-            const card2 = threeCards[1].getName();
-            const card3 = threeCards[2].getName();
-
-            const divinationAsyncProc = async () => {
-                const tarot_jsonString = await tarotAI(card1, card2, card3, personalData) as string;
-                const tarot_jsonObject = JSON.parse(tarot_jsonString);
-                setCard1Message(tarot_jsonObject.card1.interpretation);
-                setCard2Message(tarot_jsonObject.card2.interpretation);
-                setCard3Message(tarot_jsonObject.card3.interpretation);
-                const advice = tarot_jsonObject.advice as string;
-                setAdviceMessage(advice.replace('\n', '</p><p>'));
-
-                setInitialized(true);
-            }
-            divinationAsyncProc();
-        }
-    }, [isInitialized, personalData])
+    const threeCards = readingResult.tarots;
+    const card1Message = readingResult.interpretations[0];
+    const card2Message = readingResult.interpretations[1];
+    const card3Message = readingResult.interpretations[2];
+    const adviceMessage = readingResult.advice;
 
     return (
-        <div className="divination-container">
+        <div className="divination-container fade-in">
             <h2>大綿津見アトイのタロット占い</h2>
             <p className="center">結果</p>
             <div className="result-tarots">

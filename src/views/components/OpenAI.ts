@@ -15,7 +15,6 @@ export const tarotAI = async(card1: string, card2: string, card3: string, data: 
     ${data.year}/${data.month}/${data.date}生まれの人の占星術と年齢を考慮に入れ、占い師として${data.username}さんの悩みに500字以内のアドバイスを与えてください。
     ${data.message}`;
 
-    console.log('Sstart divination...');
     const completion = await openAI.chat.completions.create({
         messages:[{ role: 'user', content: message}],
         model: 'gpt-3.5-turbo',

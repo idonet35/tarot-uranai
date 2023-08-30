@@ -40,9 +40,6 @@ createOption(yearOptions, 1900, thisYear - 1);
 createOption(monthOptions, 1, 12);
 createOption(dateOptions, 1, 31);
 
-// Wait処理
-const sleep = (ms: number) => new Promise((res) => setTimeout(res, ms));
-
 export function DivinationForm() {
     const [divinationContainer, setDivinationContainer] = useState('divination-container');
     const [readingContainer, setReadingContainer] = useState('reading-container hidding');

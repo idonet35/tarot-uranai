@@ -12,7 +12,7 @@ export const tarotAI = async(card1: string, card2: string, card3: string, data: 
     1枚目 ${card1}
     2枚目 ${card2}
     3枚目 ${card3}
-    ${data.year}/${data.month}/${data.date}生まれの人の占星術と年齢を考慮に入れ、占い師として${data.username}さんの悩みに500字以内のアドバイスを与えてください。
+    ${data.year}年${data.month}月${data.date}日生まれの人の占星術と年齢を考慮に入れ、占い師として${data.username}さんの悩みに1000字以内のアドバイスを与えてください。
     ${data.message}`;
 
     const completion = await openAI.chat.completions.create({
@@ -21,7 +21,7 @@ export const tarotAI = async(card1: string, card2: string, card3: string, data: 
         functions: [
             {
                 name: 'tarotDivination',
-                description: 'Three-Card Spread result',
+                description: 'Three-Card Spreadの結果',
                 parameters: {
                     type: 'object',
                     properties: {
@@ -30,11 +30,11 @@ export const tarotAI = async(card1: string, card2: string, card3: string, data: 
                             properties: {
                                 card: {
                                     type: 'string',
-                                    description: 'card1 name',
+                                    description: 'card1の名前',
                                 },
                                 interpretation: {
                                     type: 'string',
-                                    description: 'card1 interpretation',
+                                    description: 'card1の解釈',
                                 }
                             }
                         },
@@ -43,11 +43,11 @@ export const tarotAI = async(card1: string, card2: string, card3: string, data: 
                             properties: {
                                 card: {
                                     type: 'string',
-                                    description: 'card2 name',
+                                    description: 'card2の名前',
                                 },
                                 interpretation: {
                                     type: 'string',
-                                    description: 'card2 interpretation',
+                                    description: 'card2の解釈',
                                 }
                             }
                         },
@@ -56,20 +56,20 @@ export const tarotAI = async(card1: string, card2: string, card3: string, data: 
                             properties: {
                                 card: {
                                     type: 'string',
-                                    description: 'card3 name',
+                                    description: 'card3の名前',
                                 },
                                 interpretation: {
                                     type: 'string',
-                                    description: 'card3 interpretation',
+                                    description: 'card3の解釈',
                                 }
                             }
                         },
                         advice:{
                             type: 'string',
-                            description: 'タロット占いと占星術、年齢に基づいた500文字のアドバイス',
+                            description: 'タロット占いと占星術、年齢に基づいた悩みに対する1000文字のアドバイス',
                         }
                     },
-                    required: ['card1', 'card2', 'card3', 'total', 'advice']
+                    required: ['card1', 'card2', 'card3', 'advice']
                 }
             }
         ]

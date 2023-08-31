@@ -216,12 +216,12 @@ export function DivinationForm() {
                     </div>
                 </form>
             </div>
-            <div className={readingContainer}>
-                <div id="loading-wrapper">
+            <div id="loading-wrapper" className={readingContainer}>
+                <div id="loading-container">
                     <div id="loading-text">AtoI</div>
                     <div id="loading-content"></div>
+                    <div id="loading-description" className="blinking">Now Reading</div>
                 </div>
-                <div id="loading-description" className="blinking">Now Reading</div>
             </div>
         </div>
     );
